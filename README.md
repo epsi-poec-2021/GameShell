@@ -52,85 +52,12 @@ pierre.hyvernat@univ-smb.fr
 Utilisation
 -----------
 
-### 1/ directement depuis les sources
-
-En récupérant l'archive du dépot
-
-    $ rm -rf GameShell && mkdir GameShell && wget  https://api.github.com/repos/phyver/GameShell/tarball -O -  |  tar -xz -C GameShell --strip-components 1
-    $ ./phyver-GameShell-*/start.sh
-
-ou, si votre version de `tar` ne supporte pas l'option `--strip-components`
-
-    $ rm -rf phyver-GameShell-* && wget  https://api.github.com/repos/phyver/GameShell/tarball -O -  |  tar -xz
-    $ ./phyver-GameShell-*/start.sh
-    ...
-    ...
-
-
-### 2/ directement depuis les sources
-
 Après avoir cloné le dépot :
 
-    $ git clone https://github.com/phyver/GameShell.git
+    $ git clone https://github.com/epsi-poec-2021/GameShell.git
     $ ./GameShell/start.sh -F
     ...
     ...
-
-
-### 3/ en créant une archive spécifique
-
-Après avoir cloné le dépot :
-
-    $ cd GameShell
-    $ ./bin/archive.sh -M"*find*"
-    copie des missions choisies
-        /export/home/hyvernat/src/Shell/GameShell/missions/20_find_1  --> 01_find_1
-        /export/home/hyvernat/src/Shell/GameShell/missions/31_find_2  --> 02_find_2
-        /export/home/hyvernat/src/Shell/GameShell/missions/32_find_3_xargs -->  03_find_3_xargs
-    suppression des scripts 'auto.sh' des missions
-    choix du mode de lancement
-    création de l'archive
-    suppression du répertoire temporaire
-    $ ls
-    GameShell.tgz  README  World/  bin/  doc/  lib/  missions/  start.sh*
-
-Le fichier `GameShell.tgz` contient une instance de GameShell avec uniquement
-les 3 missions autour de la commande ``find``.
-
-On peut maintenant copier cette archive n'importe où et lancer le jeu:
-
-    $ mv GameShell.tgz /tmp
-    $ cd /tmp
-    $ tar -xf GameShell.tar
-    $ ./GameShell/start.sh
-    ...
-    ...
-
-
-### 4/ en créant et utilisant une image Docker
-
-L'idée de GameShell est d'avoir une session "la plus proche possible" d'une
-session shell "standard". Je l'utilise donc sur des machines Linux "standard",
-ou sur une machine virtuelle.
-
-Il est possible de créer une image Docker en utilisant le fichier `Dockerfile`
-fourni pour lancer GameShell sans s'occuper des dépendances :
-
-Création de l'image :
-
-    $ docker build -t gash .
-
-Lancement de l'image, si vous avez un serveur X :
-
-    host +"local:docker@" \
-    && docker run -it \
-         -e DISPLAY=${DISPLAY} \
-         -v /tmp/.X11-unix:/tmp/.X11-unix \
-         gash
-
-Lancement de l'image, sans serveur X :
-
-    docker run -it gash
 
 
 Commandes de base
