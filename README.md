@@ -20,12 +20,9 @@ GameShell est soumis à la licence GPLv3 https://www.gnu.org/licenses/gpl-3.0.en
 GameShell devrait (??) fonctionner sur un système Linux standard. Pour
 Debian/Ubuntu, il faut avoir les paquets suivants :
 
-  - psmisc
-  - nano
-  - tree
-  - x11-apps
-  - bsdmainutils (pour la mission 12)
-  - python3 (pour générer la mission 33, mais conseillé de toute façon)
+```
+sudo apt install  psmisc nano tree x11 bsdmainutils  python3
+```
 
 
 Pour macOS, il faut installer ``coreutils`` et ``md5sha1sum``. Le plus simple
